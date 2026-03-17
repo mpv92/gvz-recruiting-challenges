@@ -1,0 +1,30 @@
+﻿<app-card appearance="outlined">
+  <div class="content">
+    <p class="title">Postadresse</p>
+    <p class="description">Alle mit einem * gekennzeichnetne Felder sind Pflichtfelder.</p>
+
+    <form class="form" [formGroup]="addressForm">
+      <app-select
+        [control]="salutationFormControl"
+        label="Anrede"
+        [options]="salutationOptions"
+      />
+      <app-text-input [control]="firstNameFormControl" label="Vorname" [maxLength]="30"/>
+      <app-text-input [control]="lastNameFormControl" label="Name" [maxLength]="50"/>
+      <app-text-input [control]="streetFormControl" label="Strasse" [maxLength]="80"/>
+      <app-text-input [control]="houseNumberFormControl" label="Hausnummer" [maxLength]="10"/>
+      <app-text-input [control]="postalCodeFormControl" label="PLZ" [maxLength]="10"/>
+      <app-text-input [control]="cityFormControl" label="Ort" [maxLength]="80"/>
+      <app-number-input [control]="floorFormControl" label="Stockwerk (optional)" [min]="-5" [max]="200"/>
+      <app-select [control]="countryFormControl" label="Land" [options]="countryOptions"/>
+    </form>
+
+    <p class="validation-status" [class.valid]="addressForm.valid">
+      @if (addressForm.valid) {
+        Formular valid
+      } @else {
+        Formular invalid.
+      }
+    </p>
+  </div>
+</app-card>

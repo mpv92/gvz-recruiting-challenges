@@ -8,7 +8,20 @@
   <mat-drawer mode="side" class="drawer" opened>
     <p class="navigation-category mdc-list-item__primary-text">Bauteile</p>
     <mat-nav-list class="navigation-list">
-      @for (link of navigationLinks; track link) {
+      @for (link of partNavigationLinks; track link) {
+        <a
+          mat-list-item
+          class="navigation-link"
+          [routerLink]="link.path"
+          [activated]="activeNavigationLink === link.path"
+        >
+          {{ link.title }}
+        </a>
+      }
+    </mat-nav-list>
+    <p class="navigation-category mdc-list-item__primary-text">Kombinierte Bauteile</p>
+    <mat-nav-list class="navigation-list">
+      @for (link of combinedNavigationLinks; track link) {
         <a
           mat-list-item
           class="navigation-link"
