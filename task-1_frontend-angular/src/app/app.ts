@@ -15,8 +15,16 @@ import { routes } from './app.routes';
 })
 export class App implements OnInit {
   protected activeNavigationLink: string | null = null;
-  protected navigationLinks: { path: string; title: string }[] = routes
+  protected partNavigationLinks: { path: string; title: string }[] = routes
     .filter((route) => route.path !== '**')
+    .filter((route) => route.data?.['section'] !== 'combined')
+    .map((route) => ({
+      path: route.path!,
+      title: route.data?.['title'] as string,
+    }));
+  protected combinedNavigationLinks: { path: string; title: string }[] = routes
+    .filter((route) => route.path !== '**')
+    .filter((route) => route.data?.['section'] === 'combined')
     .map((route) => ({
       path: route.path!,
       title: route.data?.['title'] as string,

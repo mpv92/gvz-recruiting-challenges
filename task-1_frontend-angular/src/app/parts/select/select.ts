@@ -4,7 +4,7 @@ import { MatSelectModule } from '@angular/material/select';
 
 export interface Option {
   label: string;
-  value: number;
+  value: string | number;
 }
 
 @Component({
@@ -15,7 +15,7 @@ export interface Option {
 })
 export class Select {
   allowReset = input<boolean>(false);
-  control = input.required<FormControl<number | null>>(); // must not be named formControl to avoid conflict with Angular directive
+  control = input.required<FormControl>();
   label = input.required<string>();
   options = input.required<Option[]>();
 }
