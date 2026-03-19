@@ -1,0 +1,31 @@
+<div class="demo-container">
+  <h1>Adresse hinzufügen</h1>
+  <hr/>
+  <form (ngSubmit)="onSubmit()" class="form form-grid" [formGroup]="postAddressForm">
+    <app-select
+      [control]="genderFormcontrol"
+      label="Anrede"
+      [options]="genderOptions"
+    />
+    <app-text-input class="col-6" [control]="firstNameFormControl" label="Vorname" [maxLength]="30"/>
+    <app-text-input class="col-6" [control]="lastNameFormControl" label="Name" [maxLength]="50"/>
+    <app-text-input class="col-8" [control]="streetFormControl" label="Strasse" [maxLength]="80"/>
+    <app-text-input class="col-4" [control]="houseNumberFormControl" label="Hausnummer" [maxLength]="10"/>
+    <app-text-input class="col-3" [control]="postalCodeFormControl" label="PLZ" [maxLength]="10"/>
+    <app-text-input class="col-7" [control]="cityFormControl" label="Ort" [maxLength]="80"/>
+    <app-number-input class="col-2" [control]="floorFormControl" label="Stockwerk (optional)" [min]="-5" [max]="200"/>
+    <app-select [control]="countryFormControl" label="Land" [options]="countryOptions"/>
+    <button class="btn btn-submit">Speichern</button>
+  </form>
+
+
+  <div class="alert">
+    @if (apiSuccessMessage) {
+      <div class="alert-success">{{ apiSuccessMessage }}</div>
+    } @else if (apiErrorMessage) {
+      <div class="alert-error">{{ apiErrorMessage }}</div>
+    }
+  </div>
+
+
+</div>
